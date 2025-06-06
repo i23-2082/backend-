@@ -10,16 +10,13 @@ const rateLimit = require('express-rate-limit');
 
 if (result.error) {
   console.error('Error loading .env file:', result.error.message);
-  // Do not exit; log the error and proceed
 }
 
 if (!process.env.DATABASE_URL) {
   console.error('Error: DATABASE_URL is not set');
-  // Do not exit; proceed and let requests fail gracefully
 }
 if (!process.env.JWT_SECRET) {
   console.error('Error: JWT_SECRET is not set');
-  // Do not exit; proceed
 }
 
 const app = express();
@@ -61,7 +58,6 @@ db.raw('SELECT 1')
   .then(() => console.log('Database connected successfully'))
   .catch((err) => {
     console.error('Database connection error:', err);
-    // Do not exit; let requests fail gracefully
   });
 
 // Export the app for Vercel serverless
